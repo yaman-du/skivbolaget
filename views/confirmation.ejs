@@ -1,0 +1,25 @@
+<%- include('partials/head.ejs') %>
+
+<body>
+    <%- include('partials/header.ejs') %>
+    <div style="margin: 10px">
+    <h1>Confirmation page</h1>
+    <br />
+    <p>Thank you <span style="text-transform: capitalize;"><%= order.username %></span> for your purchase!</p>
+    <p>Here is your order number: <strong><%= order.orderNumber %></strong></p>
+
+    <p>Invoice information:</p>
+    <ul>
+        <li>fullname: <%= order.invoiceInfo.fullName %></li>
+        <li>email: <%= order.invoiceInfo.email %></li>
+        <li>address: <%= order.invoiceInfo.address %>, <%= order.invoiceInfo.zip %> <%= order.invoiceInfo.city %></li>
+        <br />
+        <li>Total paid: <%= order.totalPrice %> SEK.</li>
+    </ul>
+
+    <a href="/" style="color:bisque">Main page</a>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<%- include('partials/head.ejs') %>
+
+<body>
+    <%- include('partials/header.ejs') %>
+    <div style="margin: 10px">
+        <h1>Admin page</h1>
+    
+        <% if (user) { %>
+        <h3>Welcome, <span style="text-transform: capitalize"><%= user.username %></span>!</h3>
+        <p style="font-size: smaller;">Your contact info (email) is: <%= user.email %>.</p>
+        <% } %>
+        <br />
+        <form action="/admin" method="POST" id="post-album-form">
+            <label for="urlLastFm">Please enter an URL corresponding to an album from <a href="http://www.last.fm"
+                    target="_blank">Last.fm</a>.<br /><br />
+                <input type="text" name="url" id="urlLastFm" placeholder="Copy URL from Last.fm" autofocus required
+                    size="60" style="font-size:large" />
+            </label><br /><br />
+            <button type="submit" style="color: grey; padding: 20px 20px; font-size:large">Post album</button>
+        </form>
+        <br />
+    
+        <% if (error) { %>
+        <p>We can't handle your request, please choose another album without the following characters: "…".</p>
+        <% } %>
+    
+        <% if (invalidAlbum) { %>
+        <p>The data from Last.fm about the album '<%= data.album.name %>' by artist <i><%= data.album.artist %></i> doesn't
+            contain enough information to be added to Skivbolaget.</p>
+        <% } %>
+    
+        <% if (albumAdded) { %>
+        <p>The data from Last.fm about the album '<%= newAlbumInDb.name %>' by artist <i><%= newAlbumInDb.artist %></i> has
+            been successfully added to Skivbolaget.</p>
+        <% } %>
+    
+        <% if (existingAlbum) { %>
+        <p>The album '<%= data.album.name %>' by artist <i><%= data.album.artist %></i> already exists in the collection of
+            Skivbolaget.</p>
+        <% } %>
+    
+        <br />
+        <% if (user.adminAlbums.length > 0) { %>
+        <p style="text-transform: uppercase; font-size: small;">Here are the album(s) you posted:</p>
+        <ul>
+            <% user.adminAlbums.forEach(album => { %>
+            <li><em><%= album.name %></em> by <%= album.artist %>&nbsp;&nbsp;<span class="removeAdminAlbum"
+                    style="font-size: small"><a href="/removeadminalbum/<%= album._id %>/<%= album.itemId %>"
+                        style="color:grey">DELETE THIS ALBUM FROM YOUR COLLECTION</a></span></li>
+            <% }) %>
+        </ul>
+        <% } %>
+        <p><a href="/logout" style="color: lightcoral">Log out</a></p>
+    </div>
+</body>
+
+</html>

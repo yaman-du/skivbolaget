@@ -1,0 +1,23 @@
+.page-pagination {
+    display: inline;
+    margin: 0 auto;
+        ul.pagination{
+            list-style: none;
+            padding: 0;
+            border-top: 2px solid grey;
+            border-bottom: 2px solid grey;
+            li.page-item {
+                display: inline;
+                a {
+                    padding: 0px 5px;
+                    border-left: 2px solid grey;
+                    border-right: 2px solid grey;
+                    color: #F4F4F4;
+                    background-color: #09700c;
+                    font-size: x-large;
+                    margin: 5px;
+                    text-decoration: none;
+                }
+            }
+        }
+}

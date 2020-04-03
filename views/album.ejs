@@ -1,0 +1,64 @@
+<%- include('partials/headalbum.ejs') %>
+<body>
+    <%- include('partials/header.ejs') %>
+    <div class="container" id="albumcontainer">
+        <div class="item">
+            <div class="image">
+                <img src="<%= album.imgUrl %>" alt="Image of '<%= album.name %>' by <%= album.artist %>" />
+            </div>
+            <div class="artist"><%= album.artist %></div>
+            <div class="album"><i><%= album.name %></i></div>
+            <div class="year"><%= album.released %></div>
+            <div class="price">
+                <form action="/addtocart/<%= album._id %>" method="get">
+                    <button type="submit"><%= album.price %> SEK</button>
+                </form>
+            </div>
+        </div>
+        <div class="musicPlayer">
+            <iframe src="https://open.spotify.com/embed/album/0xtOxVRRaA0kW7X4PlbtuP" width="100%" height="100%"
+                frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        </div>
+        <div class="musicPlayerLarge" id="musicPlayerLarge">
+            <iframe src="https://open.spotify.com/embed/album/0xtOxVRRaA0kW7X4PlbtuP" width="100%" height="100%"
+                frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                
+                <div class="albumInfo" id="albumInfoLarge">
+
+                    <div class="curator">Curator</div>
+                    <div class="curatorsNote">
+                        <p>Lorem Ipsum is the single greatest threat. We are not - we are not keeping up with
+                            other websites. Lorem Ipsum best not make any more threats to your website. It will be met with fire
+                            and
+                            fury like the world has never seen. Does everybody know that pig named Lorem Ipsum? An ‘extremely
+                            credible
+                            source’ has called my office and told me that Barack Obama’s placeholder text is a fraud.</p>
+                    </div>
+                    <div class="aboutAlbum">About album</div>
+                    <div class="albumWiki">
+                        <p><%= album.description %></p>
+                    </div>
+                </div>
+        
+        </div>
+    </div>
+    <div class="albumInfo">
+
+        <div class="curator">Curator</div>
+        <div class="curatorsNote">
+            <p>Lorem Ipsum is the single greatest threat. We are not - we are not keeping up with
+                other websites. Lorem Ipsum best not make any more threats to your website. It will be met with fire
+                and
+                fury like the world has never seen. Does everybody know that pig named Lorem Ipsum? An ‘extremely
+                credible
+                source’ has called my office and told me that Barack Obama’s placeholder text is a fraud.</p>
+        </div>
+        <div class="aboutAlbum">About album</div>
+        <div class="albumWiki">
+            <p><%= album.description %></p>
+        </div>
+    </div>
+
+</body>
+
+</html>

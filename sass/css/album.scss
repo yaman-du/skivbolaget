@@ -1,0 +1,185 @@
+$break-small: 320px;
+$break-medium: 600px;
+$break-large: 1200px;
+.sortContainer{
+    display: flex;
+    font-size: 1.2em;
+    .filter{
+        margin-left: auto;
+        display: flex;
+    }
+    .sort{
+        justify-content: flex-end;
+        margin-left: 10px;
+        margin-right: 15px;
+        display: inline;
+        text-align: right;
+    }
+}
+.container {
+    .item {
+        display: grid;
+        width: 100%;
+        grid-template-columns: 15px repeat(12, 1fr) 15px;
+        grid-template-rows: repeat(15fr);
+    .image {
+        margin-top: 20px;
+        grid-column: 2   / 14;
+        grid-row: 2 / 2;
+
+        img {
+            max-width: 100%;
+        }
+    }
+    .artist {
+        grid-column: 2 / 9;
+        grid-row: 13 / 14;
+        font-size: 1.2em;
+        color: #e0e0e0;
+        margin-top: 5px;
+    }
+    .album {
+        grid-column: 2 / 14;
+        grid-row: 13 / 14;
+        text-align: right;
+        font-size: 1.2em;
+        color: #f4f4f4;
+        margin-top: 5px;
+    }
+    .year {
+        grid-column: 10 / 14;
+        grid-row: 14 / 15;
+        text-align: right;
+        font-size: 1em;
+        font-weight: lighter;
+        margin-top: 5px;
+    }
+    .price {
+        grid-column: 2 / 9;
+        grid-row: 14 / 15;
+        font-size: 1em;
+        font-weight: lighter;
+        margin-top: 3.5px;
+        button {
+            background-color: rgb(41, 41, 41);
+            color: #e0e0e0;
+            font-size: 1em;
+            border: 2px solid rgb(9, 112, 12);
+            border-radius: 6px;
+            transition-duration: 0.4s;
+          }
+          button:hover {
+            background-color: rgb(29, 112, 12);
+            color: white;
+          }
+        }
+    }
+    .musicPlayer {
+        height: 395px;
+        margin: 10px 15px 10px 15px
+    }
+    .musicPlayerLarge {
+        display: none;
+        // height: 395px;
+        // margin: 10px 15px 10px 15px
+    }
+}
+.albumInfo {
+    text-align: center;
+    width: 1fr;
+    margin-left: 15px;
+    margin-right: 15px;
+    .curator {
+        box-sizing: border-box;
+        background: #0F5259;
+        border-radius: 6px;
+        margin-top: 5px;
+        font-size: 1.2em;
+    }
+    .curatorsNote {
+        border: 1px solid #EEEEEE;
+        box-sizing: border-box;
+        border-radius: 6px;
+        margin-top: 9px;
+        font-size: 1em;
+        font-weight: lighter;
+    }
+    .aboutAlbum {
+        box-sizing: border-box;
+        background: #0F5259;
+        border-radius: 6px;
+        margin-top: 9px;
+        font-size: 1.2em;
+    }
+    .albumWiki {
+        border: 1px solid #EEEEEE;
+        box-sizing: border-box;
+        border-radius: 6px;
+        margin-top: 9px;
+        font-size: 1em;
+        font-weight: lighter;
+    }
+    p {
+        margin: 6px;
+    }
+}
+#albumInfoLarge{
+    display: none;
+}
+@media screen and (min-width: $break-medium) {
+    .container {
+        display: grid;
+        grid-template-columns: repeat(2,1fr); 
+        // margin: 10px 30px 30px 100px;  
+        .musicPlayer{
+            display: none;
+            padding: 15px;
+            margin: 20px 15px 0px 15px;
+            height: 100%;
+            iframe{  
+                height: 100%;
+            }
+        }
+        .musicPlayerLarge{
+            display: block;
+            // padding: 15px;
+            margin: 20px 15px 0px 15px;
+            height: 90%;
+            iframe{
+                height: 100%;
+            }
+        }
+        
+    }
+}
+
+@media screen and (min-width: $break-large) {
+
+    .container {
+        margin: 0 5px;
+        .item { 
+            max-width: 85%;
+            margin-left: 10%;
+        }
+    }
+    .musicPlayer{
+        height: 100%;
+    }
+    .musicPlayerLarge{
+        height: 50%;
+        max-width: 85%;
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+    #musicPlayerLarge{
+        height: 50%
+    }
+    .albumInfo{
+        display: none;
+    }
+    #albumInfoLarge{
+        display: block;
+        margin-left: 5px;
+    }
+
+}

@@ -1,0 +1,39 @@
+<% if (albums.length >= 1) { %>
+    <nav class="page-pagination">
+        <ul class="pagination">
+            
+            <% if (hasPreviousPage) { %>
+            <li class="page-item">
+                <a href="/?page=<%= previousPage %>" class="page-link" id="previous-page-sign">&laquo;</a>
+            </li>
+            
+            <li class="page-item">
+                <a href="/?page=<%= previousPage %>" class="page-link" id="previous-page-num"><%= previousPage %></a>
+            </li>
+            <% } %>
+
+            <li class="page-item">
+                <a href="/?page=<%= currentPage %>" class="page-link" id="current-page-num" style="font-weight: bolder;"><%= currentPage %></a>
+            </li>
+            
+            <% if (hasNextPage) { %>
+            <li class="page-item">
+                <a href="/?page=<%= nextPage %>" class="page-link" id="next-page-num"><%= nextPage %></a>
+            </li>
+            <% } %>
+            
+            <li class="page-item">…</li>
+
+            <li class="page-item">
+                <a href="/?page=<%= lastPage %>" class="page-link" id="next-page-num"><%= lastPage %></a>
+            </li>
+
+            <% if (hasNextPage) { %>
+            <li class="page-item">
+                <a href="/?page=<%= nextPage %>" class="page-link" id="next-page-sign">&raquo;</a>
+            </li>
+            <% } %>
+        </ul>
+    </nav>
+<% } %>
+

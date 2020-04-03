@@ -1,0 +1,40 @@
+<%- include('partials/head.ejs') %>
+
+<body>
+    <%- include('partials/header.ejs') %>
+    <h1 class="formHeadline">Log-in page</h1>
+
+    <form action="/login" method="post" id="post-login-form">
+        <div class="loginContainer">
+            <div class="signupName loginControl">
+                <input type="text" name="username" id="username" placeholder="Username"><br />
+            </div>
+            <br />
+            <div class="signupPassword loginControl">
+                <input type="password" name="password" id="password" placeholder="Password"><br />
+            </div>
+            <br />
+            <div class="signupSubmit">
+                <button type="submit" class="confirmBtn">Log in</button>
+            </div>
+        </div>
+    </form>
+    <br />
+    <div class="accountInfo">
+        <% if (invalidUser) { %>
+        <p>The username and password doesn't match. Please try again.</p>
+        <% } %>
+        <% if (!invalidUser) { %>
+        <% if (!foundUser) { %>
+        <p>The user doesn't exist. Please sign up at <a href="/signup">Sign-up page</a>.</p>
+        <% } else { %>
+        <p>No account? Please sign up at <a href="/signup">Sign-up page</a></p>
+        <% } %>
+        <% } %>
+
+        <p>Did you forget your password? <a href="/reset">Send reset email</a></p>
+    </div>
+
+</body>
+
+</html>

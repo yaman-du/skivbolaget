@@ -1,0 +1,85 @@
+<%- include('partials/head.ejs') %>
+
+<body>
+    <%- include('partials/header.ejs') %>
+    <div class="cart">
+        <h1>Cart</h1>
+
+        <% if (emptyCart) { %>
+        <i>Cart is empty</i>
+
+        <% } %>
+
+        <% if (user.status == "guest") { %>
+
+        <p>Hello <%= user.status %>, here is the content of your cart:</p>
+        <div class="cartContainer">
+            <% user.cart.forEach(album => { %>
+
+            <div class="info">
+                <div class="image"><%= album.image %></div>
+                <div class="album"><%= album.name %></div>
+                <div class="artist"><%= album.artist %></div>
+                <div class="price"><%= album.price %></div>
+
+                <% }); %>
+            </div>
+        </div>
+        <!-- <ul>
+            <% user.cart.forEach(album => { %>
+            <li><strong>Album name: <%= album.name %></strong></li>
+            <li>Artist of the album: <%= album.artist %></li>
+            <li>Price: <%= album.price %></li>
+            <br />
+            <% }); %>
+        </ul> -->
+        <p>You are not a registered user, please <a href="/signup">sign up</a> and login to proceed to checkout and
+            place
+            your order.</p>
+
+        <% } %>
+
+        <% if (user.status == "user") { %>
+        <p>Hello <%= user.username %>, here is the content of your cart:</p>
+        <div class="cartContainer">
+            <% user.cart.forEach(album => { %>
+
+            <div class="item">
+                <div class="image">
+                    <img src="<%= album.imgUrl %>" alt="Image of '<%= album.name %>' by <%= album.artist %>" />
+                </div>
+
+                <div class="yourCart">
+                    <i><%= album.name %></i><br>
+                    <b><%= album.artist %></b><br>
+                    <%= album.price %> SEK
+                </div>
+                <div class="removeItem">
+                    <a href="/removeitem/<%= album._id %>">X</a>
+                </div>
+            </div>
+            <% }); %>
+        </div>
+        <div class="cost">Total Sum: <%= totalPrice %> SEK</div>
+    </div>
+
+    <div class="checkout">
+        <form action="/checkout" method="POST">
+            <button type="submit" class="checkoutBtn">Proceed to Checkout</button>
+        </form>
+    </div>
+    <% } %>
+
+    <% if (user.status == "admin") { %>
+    <p>Hello <%= user.username %>, you have the status of <%= user.status %> and don't have the possibility to add
+        item
+        to your cart. Please go to:</p>
+    <ul>
+        <li><a href="/">Main.</a></li>
+        <li><a href="/admin">Admin page.</a></li>
+    </ul>
+    <% } %>
+
+</body>
+
+</html>

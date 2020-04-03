@@ -1,0 +1,37 @@
+<%- include('partials/head.ejs') %>
+
+<body>
+    <%- include('partials/header.ejs') %>
+    <!-- <div class="sortContainer">
+        <div class="filter">filter</div>
+        <div class="sort">sort</div>
+    </div> -->
+    <div class="container">
+        <% albums.forEach((album) => { %>
+        <div class="item">
+            <div class="image">
+                <img src="<%= album.imgUrl %>" alt="Image of '<%= album.name %>' by <%= album.artist %>" />
+                <a href="/album/<%= album._id %>">
+                    <div class="overlay">
+                        <div class="overlay-text">
+                            <p><%= album.description %></p>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+            <div class="artist"><%= album.artist %></div>
+            <div class="album"><i><%= album.name %></i></div>
+            <div class="year"><%= album.released %></div>
+            <div class="price">
+                <form action="/addtocart/<%= album._id %>" method="get">
+                    <button type="submit"><%= album.price %> SEK</button>
+                </form>
+            </div>
+        </div>
+        <% }) %>
+        <%- include('partials/pagination') %>
+    </div>
+</body>
+
+</html>

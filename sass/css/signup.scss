@@ -1,0 +1,19 @@
+.signup-container{
+   display: grid;
+   width: 100%;
+   grid-template-columns: 15px repeat(12, 1fr) 15px;
+   grid-template-rows: repeat(15fr); 
+
+   button {
+      background-color: rgb(41, 41, 41);
+      color: #e0e0e0;
+      font-size: 1em;
+      border: 2px solid rgb(9, 112, 12);
+      border-radius: 6px;
+      transition-duration: 0.4s;
+    }
+    button:hover {
+      background-color: rgb(29, 112, 12); /* Green */
+      color: white;
+    }
+}

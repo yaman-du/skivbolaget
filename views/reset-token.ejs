@@ -1,0 +1,15 @@
+<h1 class="formHeadline">Reset page</h1>
+
+<form action="/reset/:token" method="POST">
+
+    <input type="hidden" name="userId" value="<%= user._id %>">
+
+    <label for="password">Please type your new password:
+        <input type="password" name="password" id="password" placeholder="new password">
+    </label>
+        <input type="password" name="passwordrepeat" id="passwordrepeat" placeholder="Repeat password">
+    
+
+    <button type="submit">Save new password</button>
+
+</form>
