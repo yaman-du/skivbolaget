@@ -4,6 +4,7 @@ if (process.env.NODE_ENV !== "production")
 const config = {
     databaseURL: process.env.DATABASE,
     secretKey: '1C5CHFA',
+
     sendgridkey: process.env.MAIL
 };
 
